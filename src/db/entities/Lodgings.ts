@@ -13,6 +13,6 @@ export class Lodgings {
     @Field()
     vehicleId?: string
 
-    /*@Field()
-    checkInTime: Date*/
+    @Field()
+    vehicleArrivalTime?: Date
 }

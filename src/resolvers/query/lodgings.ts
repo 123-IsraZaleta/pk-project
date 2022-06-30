@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { Resolver, Query, Ctx, InputType, Field  } from 'type-graphql';
+import { Resolver, Query, Ctx, Arg  } from 'type-graphql';
 import { Lodgings } from '../../db/entities';
 import { Context } from '../../config/context';
 
@@ -13,15 +13,15 @@ export class LodgingsQuery {
 
     @Query(() => Lodgings)
     async lodgingById(
-        @Ctx() ctx: Context, 
-        params: { id: string }) {
+        @Arg('id') id: string,
+        @Ctx() ctx: Context) {
             const lodging = await ctx.prisma.lodgings.findUnique({
                 where: {
-                    id: params.id
+                    id
                 }
             });
             if(!lodging){
-                throw new Error(`User not found with id ${params.id}`)
+                throw new Error(`User not found with id ${id}`)
             }
 
             return lodging

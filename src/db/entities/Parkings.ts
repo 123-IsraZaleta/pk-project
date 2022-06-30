@@ -14,5 +14,5 @@ export class Parkings {
     vehicleId?: string
 
     @Field()
-    vehicleArrivalTime: Date
+    vehicleArrivalTime?: Date
 }
