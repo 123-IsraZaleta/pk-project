@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { Resolver, Query, Ctx, InputType, Field, Arg  } from 'type-graphql';
+import { Resolver, Query, Ctx, Arg } from 'type-graphql';
 import { Vehicle } from '../../db/entities';
 import { Context } from '../../config/context';
 
