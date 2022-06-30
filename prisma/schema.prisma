@@ -1,0 +1,41 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Vehicle {
+  id                    String          @id @default(auto()) @map("_id") @db.ObjectId
+  plates                String          @unique
+  color                 String
+  model                 String
+  arrivalTime           DateTime       @default(now())
+  departureTime         DateTime?      
+  isInside              Boolean        @default(true) 
+  parkings              Parkings?  
+  lodgings              Lodgings?
+  @@unique([id, arrivalTime])
+}
+
+model Parkings {
+  id                    String        @id @default(auto()) @map("_id") @db.ObjectId
+  vehicle               Vehicle       @relation(fields: [vehicleId, vehicleArrivalTime], references: [id, arrivalTime])
+  vehicleId             String        @unique @db.ObjectId
+  vehicleArrivalTime    DateTime
+  @@unique([vehicleId, vehicleArrivalTime])
+}
+
+model Lodgings {
+  id                    String        @id @default(auto()) @map("_id") @db.ObjectId
+  vehicle               Vehicle       @relation(fields: [vehicleId, vehicleArrivalTime], references: [id, arrivalTime])
+  vehicleId             String        @unique @db.ObjectId
+  vehicleArrivalTime    DateTime
+  @@unique([vehicleId, vehicleArrivalTime])
+}
+
+
+
+// npx prisma generate
