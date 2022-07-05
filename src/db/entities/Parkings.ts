@@ -14,7 +14,7 @@ export class Parkings {
     vehicleId?: string
 
     @Field((type) => Date)
-    vehicleExitTime?: Date
+    vehicleExitTime?: Date | null
 
     @Field((type) => Boolean, { defaultValue: true })
     isPayed: boolean
