@@ -7,8 +7,8 @@ enum ParkingType {
 }
 
 registerEnumType(ParkingType, {
-  name: "ParkingType", // this one is mandatory
-  description: "The parking types", // this one is optional
+  name: "ParkingType",
+  description: "The parking types",
 });
 
 @InputType()
@@ -34,7 +34,7 @@ export class ParkingCreateInput {
     @Field()
     isPayed: boolean;
 
-    @Field(type => ParkingType)
+    @Field((type) => ParkingType)
     parkingType: ParkingType;
 
 }
@@ -44,7 +44,7 @@ export class LodgingCreateInput {
     @Field()
     id: string;
 
-    @Field(type => ParkingType)
+    @Field((type) => ParkingType)
     parkingType: ParkingType;    
 }
 

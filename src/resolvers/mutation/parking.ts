@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { Resolver, Query, Ctx, InputType, Field, Mutation, Arg } from 'type-graphql';
+import { Resolver, Ctx, Mutation, Arg } from 'type-graphql';
 import { Context } from '../../config/context';
 import { Parkings } from '../../db/entities';
 import { ParkingCreateInput, ParkingsExitInput, LodgingCreateInput } from './input';
@@ -31,7 +31,7 @@ export class ParkingMutation {
                 id: data.id
             },
             data: {
-                parkingType: data.parkingType
+                parkingType: "LODGING"
             }
         })
     }
