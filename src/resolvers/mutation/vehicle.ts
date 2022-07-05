@@ -2,9 +2,8 @@ import 'reflect-metadata';
 import { Resolver, Query, Ctx, InputType, Field, Mutation, Arg, FieldResolver, Root } from 'type-graphql';
 import { Context } from '../../config/context';
 import { Vehicle } from '../../db/entities';
-import { VehicleCreateInput, VehicleExitInput } from './input';
+import { VehicleCreateInput } from './input';
 import { Parkings } from '../../db/entities/Parkings';
-import { Lodgings } from '@prisma/client';
 
 @Resolver(Vehicle)
 export class VehicleMutation {
@@ -38,25 +37,8 @@ export class VehicleMutation {
             data: {
                 plates: data.plates,
                 color: data.color,
-                model: data.model,
-                arrivalTime: data.arrivalTime,
-                isInside: data.isInside
+                model: data.model
             }
         })
-    }
-
-    @Mutation((returns) => Vehicle)
-    async exitVehicle(
-        @Arg('data') data: VehicleExitInput, 
-        @Ctx() ctx: Context
-    ): Promise<Vehicle> {
-        return ctx.prisma.vehicle.update({
-            where: { 
-                plates: data.plates 
-            },
-            data: { 
-                isInside: !data.isInside // add departureTime
-            }
-          })
     }
 }

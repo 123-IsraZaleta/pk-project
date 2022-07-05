@@ -21,7 +21,7 @@ export class ParkingQuery {
                 }
             });
             if(!parking){
-                throw new Error(`User not found with id ${id}`)
+                throw new Error(`Parking not found with id ${id}`)
             }
 
             return parking

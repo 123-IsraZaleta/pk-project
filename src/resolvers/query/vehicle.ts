@@ -13,15 +13,15 @@ export class VehicleQuery {
 
     @Query(() => Vehicle)
     async vehicleById(
-        @Arg('id') id: string,
-        @Ctx() ctx: Context) {
+        @Ctx() ctx: Context,
+        @Arg('id') id: string) {
             const vehicle = await ctx.prisma.vehicle.findUnique({
                 where: {
                     id
                 }
             });
             if(!vehicle){
-                throw new Error(`User not found with id ${id}`)
+                throw new Error(`Vehicle not found with id ${id}`)
             }
 
             return vehicle
