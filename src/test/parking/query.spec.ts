@@ -19,7 +19,7 @@ test('should find a parking by id ', async() => {
     const expectParking: Parkings = {
         id: faker.database.mongodbObjectId(),
         vehicleId: '1',
-        // checkInTime: new Date()
+        vehicleArrivalTime: new Date()
     };
     mockCtx.prisma.parkings.findUnique.mockResolvedValue(expectParking);
     const response = parkingClass.parkingById(mockCtx, { id: ""});

@@ -7,34 +7,35 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum ParkingType {
+  PARKING
+  LODGING
+}
+
 model Vehicle {
   id                    String          @id @default(auto()) @map("_id") @db.ObjectId
   plates                String          @unique
   color                 String
   model                 String
-  arrivalTime           DateTime       @default(now())
-  departureTime         DateTime?      
-  isInside              Boolean        @default(true) 
   parkings              Parkings?  
-  lodgings              Lodgings?
-  @@unique([id, arrivalTime])
 }
 
 model Parkings {
-  id                    String        @id @default(auto()) @map("_id") @db.ObjectId
-  vehicle               Vehicle       @relation(fields: [vehicleId, vehicleArrivalTime], references: [id, arrivalTime])
-  vehicleId             String        @unique @db.ObjectId
-  vehicleArrivalTime    DateTime
-  @@unique([vehicleId, vehicleArrivalTime])
+  id                    String          @id @default(auto()) @map("_id") @db.ObjectId
+  vehicle               Vehicle         @relation(fields: [vehicleId], references: [id])
+  vehicleId             String          @unique @db.ObjectId
+  vehicleExitTime       DateTime?     
+  isPayed               Boolean         @default(false)
+  // totalAmount           Float
+  parkingType           ParkingType     @default(PARKING)
 }
 
-model Lodgings {
-  id                    String        @id @default(auto()) @map("_id") @db.ObjectId
-  vehicle               Vehicle       @relation(fields: [vehicleId, vehicleArrivalTime], references: [id, arrivalTime])
-  vehicleId             String        @unique @db.ObjectId
-  vehicleArrivalTime    DateTime
-  @@unique([vehicleId, vehicleArrivalTime])
-}
+
+
+
+
+
+
 
 
 
