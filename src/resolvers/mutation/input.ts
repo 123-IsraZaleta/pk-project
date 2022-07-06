@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { InputType, Field, registerEnumType} from 'type-graphql';
+import { InputType, Field, registerEnumType } from 'type-graphql';
 
 enum ParkingType {
     PARKING,
@@ -60,14 +60,32 @@ export class ParkingsExitInput {
     isPayed: boolean;
 }
 
+@InputType()
+export class MissingTicketCreateInput {
+    @Field()
+    vehicleId: string;
+
+    @Field()
+    timeToCreate: Date;
+
+    @Field()
+    isPayed: boolean;
+}
+
+@InputType()
+export class MissingTicketPayInput {
+    @Field()
+    vehicleId: string;
+
+    @Field()
+    isPayed: boolean;
+}
+
 /*
-model Parkings {
+model MissingTicket {
   id                    String          @id @default(auto()) @map("_id") @db.ObjectId
   vehicle               Vehicle         @relation(fields: [vehicleId], references: [id])
   vehicleId             String          @unique @db.ObjectId
-  vehicleExitTime       DateTime?     
   isPayed               Boolean         @default(false)
-  // totalAmount           Float
-  parkingType           ParkingType     @default(PARKING)
 }
 */

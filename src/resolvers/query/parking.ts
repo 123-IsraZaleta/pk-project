@@ -13,8 +13,8 @@ export class ParkingQuery {
 
     @Query(() => Parkings)
     async parkingById(
-        @Arg('id') id: string,
-        @Ctx() ctx: Context) {
+        @Ctx() ctx: Context,
+        @Arg('id') id: string) {
             const parking = await ctx.prisma.parkings.findUnique({
                 where: {
                     id
