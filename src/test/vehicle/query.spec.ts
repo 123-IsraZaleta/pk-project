@@ -20,10 +20,7 @@ test('should find a vehicle by id ', async() => {
         id: faker.database.mongodbObjectId(),
         plates: "LXN-564-0",
         color: "white",
-        model: "City",
-        isInside: true,
-        arrivalTime: new Date(),
-        departureTime: new Date()
+        model: "City"
     };
     mockCtx.prisma.vehicle.findUnique.mockResolvedValue(expectedVehicle);
     const response = vehicleClass.vehicleById(mockCtx, expectedVehicle.id );
