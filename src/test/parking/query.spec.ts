@@ -28,14 +28,16 @@ test('should find a parking by id ', async() => {
     await expect(response).resolves.toEqual(expectParking);
 });
 
-/*
-model Parkings {
-  id                    String          @id @default(auto()) @map("_id") @db.ObjectId
-  vehicle               Vehicle         @relation(fields: [vehicleId], references: [id])
-  vehicleId             String          @unique @db.ObjectId
-  vehicleExitTime       DateTime?     
-  isPayed               Boolean         @default(false)
-  // totalAmount           Float
-  parkingType           ParkingType     @default(PARKING)
-}
-*/
+test('should find a parking by id ', async() => {
+    const expectParking: Parkings = {
+        id: faker.database.mongodbObjectId(),
+        vehicleId: '1',
+        vehicleExitTime: new Date(),
+        isPayed: false,
+        parkingType: "LODGING"
+    };
+    mockCtx.prisma.parkings.findUnique.mockResolvedValue(expectParking);
+    const response = parkingClass.parkingById(mockCtx, expectParking.id);
+    await expect(response).resolves.toEqual(expectParking);
+});
+
