@@ -15,7 +15,7 @@ export class ParkingMutation {
         return ctx.prisma.parkings.create({
             data: {
                 vehicleId: data.vehicleId,
-                vehicleExitTime: data.vehicleExitTime,
+                vehicleExitTime: null,
                 isPayed: data.isPayed,
                 parkingType: "PARKING"
             }
