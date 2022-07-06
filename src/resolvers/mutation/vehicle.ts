@@ -30,8 +30,8 @@ export class VehicleMutation {
 
     @Mutation((returns) => Vehicle)
     async signupVehicle(
-        @Arg('data') data: VehicleCreateInput, 
-        @Ctx() ctx: Context
+        @Ctx() ctx: Context,
+        @Arg('data') data: VehicleCreateInput 
     ): Promise<Vehicle> {
         return ctx.prisma.vehicle.create({
             data: {
