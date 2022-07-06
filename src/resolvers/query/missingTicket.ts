@@ -12,7 +12,7 @@ export class MissingTicketQuery {
     }
 
     @Query(() => MissingTicket)
-    async MissingTicketById(
+    async missingTicketById(
         @Ctx() ctx: Context,
         @Arg('id') id: string)
          {

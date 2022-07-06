@@ -16,7 +16,8 @@ export class ParkingMutation {
             data: {
                 vehicleId: data.vehicleId,
                 vehicleExitTime: data.vehicleExitTime,
-                isPayed: data.isPayed
+                isPayed: data.isPayed,
+                parkingType: "PARKING"
             }
         })
     }
