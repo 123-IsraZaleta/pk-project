@@ -28,7 +28,7 @@ model Parkings {
   vehicleExitTime       DateTime?     
   isPayed               Boolean         @default(false)
   // totalAmount           Float
-  parkingType           ParkingType     @default(PARKING)
+  parkingType           ParkingType     // @default(PARKING)
 }
 
 model MissingTicket {

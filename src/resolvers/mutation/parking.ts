@@ -1,3 +1,4 @@
+import { ParkingType } from '@prisma/client';
 import 'reflect-metadata';
 import { Resolver, Ctx, Mutation, Arg } from 'type-graphql';
 import { Context } from '../../config/context';
@@ -11,13 +12,12 @@ export class ParkingMutation {
     async signupParking( 
         @Ctx() ctx: Context,
         @Arg('data') data: ParkingCreateInput
-    ): Promise<Parkings> {
+    ): Promise<any> {
         return ctx.prisma.parkings.create({
             data: {
                 vehicleId: data.vehicleId,
-                vehicleExitTime: null,
                 isPayed: data.isPayed,
-                parkingType: "PARKING"
+                parkingType: ParkingType.PARKING
             }
         })
     }
@@ -26,13 +26,13 @@ export class ParkingMutation {
     async signupLodging(
         @Ctx() ctx: Context,
         @Arg('data') data: LodgingCreateInput
-    ): Promise<Parkings> {
+    ): Promise<any> {
         return ctx.prisma.parkings.update({
             where: {
                 id: data.id
             },
             data: {
-                parkingType: "LODGING"
+                parkingType: ParkingType.LODGING
             }
         })
     }
@@ -41,7 +41,7 @@ export class ParkingMutation {
     async exitParkings(
         @Ctx() ctx: Context,
         @Arg('data') data: ParkingsExitInput
-    ): Promise<Parkings> {
+    ): Promise<any> {
         return ctx.prisma.parkings.update({
             where: { 
                 id: data.id 
