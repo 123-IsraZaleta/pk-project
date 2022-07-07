@@ -53,14 +53,3 @@ export class ParkingMutation {
           })
     }
 }
-/*
-model Parkings {
-  id                    String          @id @default(auto()) @map("_id") @db.ObjectId
-  vehicle               Vehicle         @relation(fields: [vehicleId], references: [id])
-  vehicleId             String          @unique @db.ObjectId
-  vehicleExitTime       DateTime?     
-  isPayed               Boolean         @default(false)
-  // totalAmount           Float
-  parkingType           ParkingType     @default(PARKING)
-}
-*/

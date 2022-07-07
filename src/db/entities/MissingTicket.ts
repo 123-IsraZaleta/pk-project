@@ -19,12 +19,3 @@ export class MissingTicket {
     @Field((type) => Boolean, { defaultValue: false })
     isPayed: boolean
 }
-
-/*
-model MissingTicket {
-  id                    String          @id @default(auto()) @map("_id") @db.ObjectId
-  vehicle               Vehicle         @relation(fields: [vehicleId], references: [id])
-  vehicleId             String          @unique @db.ObjectId
-  isPayed               Boolean         @default(false)
-}
-*/

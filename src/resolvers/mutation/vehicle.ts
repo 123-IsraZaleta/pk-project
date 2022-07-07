@@ -8,26 +8,6 @@ import { Parkings } from '../../db/entities/Parkings';
 @Resolver(Vehicle)
 export class VehicleMutation {
 
-    /*@FieldResolver()
-    async parkings(
-        @Root() vehicle:Vehicle,
-        @Ctx() ctx:Context
-    ): Promise<Parkings>{
-        return ctx.prisma.vehicle
-            .findUnique({ where: { id: vehicle.id, }, })
-            .parkings()
-    }
-
-    @FieldResolver()
-    async lodgings(
-        @Root() vehicle:Vehicle,
-        @Ctx() ctx:Context
-    ): Promise<Lodgings[]>{
-        return ctx.prisma.lodgings
-            .findUnique({ where: { id: vehicle.id, }, })
-            .lodgings()
-    }*/
-
     @Mutation((returns) => Vehicle)
     async signupVehicle(
         @Ctx() ctx: Context,
