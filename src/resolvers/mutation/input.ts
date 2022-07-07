@@ -1,16 +1,6 @@
 import 'reflect-metadata';
 import { InputType, Field, registerEnumType } from 'type-graphql';
-
-enum ParkingType {
-    PARKING,
-    LODGING
-}
-
-registerEnumType(ParkingType, {
-  name: "ParkingType",
-  description: "The parking types",
-});
-
+import { ParkingType } from '../../db/entities/Parkings';
 @InputType()
 export class VehicleCreateInput {   
     @Field()
@@ -27,9 +17,6 @@ export class VehicleCreateInput {
 export class ParkingCreateInput {  
     @Field()
     vehicleId: string;
-
-    @Field()
-    vehicleExitTime: Date;
 
     @Field()
     isPayed: boolean;
