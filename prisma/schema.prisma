@@ -27,8 +27,7 @@ model Parkings {
   vehicleId             String          @unique @db.ObjectId
   vehicleExitTime       DateTime?     
   isPayed               Boolean         @default(false)
-  // totalAmount           Float
-  parkingType           ParkingType     // @default(PARKING)
+  parkingType           ParkingType     
 }
 
 model MissingTicket {
